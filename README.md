@@ -84,7 +84,7 @@ processor =TrOCRProcessor(feature_extractor=feature_extractor, tokenizer=decoder
 
 ### Train parameters
 
-`<b>`{=html} Note :`</b>`{=html} some of these values were chosen to
+<b> Note :</b> some of these values were chosen to
 reduce Memory and computational power due to hardware limitation
 
 -   `maxlength for seq = 20`
