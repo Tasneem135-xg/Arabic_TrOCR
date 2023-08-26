@@ -1,4 +1,3 @@
-:::
 # Optical character recognition For Arabic Text
 
 This is a fine tuning repo for TrOCR on Images that contains arabic text
@@ -16,7 +15,6 @@ This file is organized as following:
     6.  Evaluation
 :::
 
-::: {#fd17a06c .cell .markdown}
 # The Model Architecture
 
 ![Schermafbeelding 2021-10-26 om
