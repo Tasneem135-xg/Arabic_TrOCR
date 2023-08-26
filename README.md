@@ -20,6 +20,10 @@ This file is organized as following:
 ![Schermafbeelding 2021-10-26 om
 16.09.25.png](vertopal_4a03238dee3f41dd855981586886f7e0/84fdb236e81339883abd76b5857ced0e5b47abc1.png)
 
+![GitHub Logo](https://github.com/Tasneem135-xg/Arabic_TrOCR/blob/master/png_docx/arch.png)
+
+
+
 -   TrOCR paper: <https://arxiv.org/abs/2109.10282>
 -   TrOCR documentation:
     <https://huggingface.co/transformers/master/model_doc/trocr.html>
