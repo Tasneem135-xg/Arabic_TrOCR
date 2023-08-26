@@ -1,146 +1,136 @@
-<a name="br1"></a> 
+---
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.10.0
+  nbformat: 4
+  nbformat_minor: 5
+---
 
-Opꢀcal character recogniꢀon For Arabic Text
+::: {#fbb97754 .cell .markdown}
+# Optical character recognition For Arabic Text
 
-This is a ﬁne tuning repo for TrOCR on Images that contains arabic text This ﬁle is
+This is a fine tuning repo for TrOCR on Images that contains arabic text
 
-organized as following:
+This file is organized as following:
 
-• TrOCR Architecture
+-   `TrOCR Architecture`
+-   `Dataset`
+-   `pipeline`
+    1.  Initial Dataset
+    2.  Data Cleaning
+    3.  Preprocessing
+    4.  `Training Dataset`
+    5.  Training
+    6.  Evaluation
+:::
 
-• Dataset
+::: {#fd17a06c .cell .markdown}
+# The Model Architecture
 
-• pipeline
+![Schermafbeelding 2021-10-26 om
+16.09.25.png](vertopal_4a03238dee3f41dd855981586886f7e0/84fdb236e81339883abd76b5857ced0e5b47abc1.png)
 
-a. Iniꢀal Dataset
+-   TrOCR paper: <https://arxiv.org/abs/2109.10282>
+-   TrOCR documentation:
+    <https://huggingface.co/transformers/master/model_doc/trocr.html>
+-   TrOCR Tutorial :
+    <https://github.com/NielsRogge/Transformers-Tutorials/tree/master/TrOCR>
+:::
 
-b. Data Cleaning
+::: {#125b900a .cell .markdown}
+# Pipeline
 
-c.
+### Initial Dataset
 
-Preprocessing
+-   data contains Faulty Images with croped characters that needs to be
+    removed
+-   All Images contains one line and have the same background
+    (distribution)
+-   sentence length is falls between `9-13 tokens`
 
-d. Training Dataset
+### Data Cleaning
 
-e. Training
+The dataset had croped text that needed to be removed from the training
+data this was done using
 
-f.
+1.  Detect the Height of the characters
+2.  Compare Maximum character Height to choose `threshold = 17`
+3.  Remove the Faulty Images `8%` leaving `92%` for training
 
-Evaluaꢀon
+`<b>`{=html} example:
 
-The Model Architecture
+![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
+:::
 
-•
-
-•
-
-TrOCR paper: [hꢁps://arxiv.org/abs/2109.10282](https://arxiv.org/abs/2109.10282)
-
-TrOCR documentaꢀon:
-
-[hꢁps://huggingface.co/transformers/master/model_doc/trocr.html](https://huggingface.co/transformers/master/model_doc/trocr.html)
-
-TrOCR Tutorial :
-
-•
-
-[hꢁps://github.com/NielsRogge/Transformers-Tutorials/tree/master/TrOCR](https://github.com/NielsRogge/Transformers-Tutorials/tree/master/TrOCR)
-
-
-
-<a name="br2"></a> 
-
-Pipeline
-
-Iniꢀal Dataset
-
-•
-
-•
-
-•
-
-data contains Faulty Images with croped characters that needs to be removed
-
-All Images contains one line and have the same background (distribuꢀon)
-
-sentence length is falls between 9-13 tokens
-
-Data Cleaning
-
-The dataset had croped text that needed to be removed from the training data this was done using
-
-1\. Detect the Height of the characters
-
-2\. Compare Maximum character Height to choose threshold = 17 3. Remove the
-
-Faulty Images 8%leaving 92%for training
-
-example:
-
-Data Preprocessing
+::: {#4aedefd1 .cell .markdown}
+### Data Preprocessing
 
 Removing Background and enhance the characters
 
-1\. convert image to greyscale
+1.  convert image to greyscale
+2.  Binarize image `threshold = 110`
 
-2\. Binarize image threshold = 110
+`<b>`{=html} Output:
 
-Output:
+![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
+:::
 
-Training Dataset
+::: {#8d4cf9c0 .cell .markdown}
+### Training Dataset
 
-Due to Limited Time and Computaꢀonal Power espicially RAM A random Sample was taken from the
+Due to Limited Time and Computational Power espicially RAM A random
+Sample was taken from the initial data with :
 
-iniꢀal data with :
+-   training 1400 sample
+-   evaluation 600 sample
+:::
 
-•
+::: {#e3d14ce8 .cell .markdown}
+# Training
 
-•
+The training used HuggingFace\'s Seq2SeqTrainer :
+<https://huggingface.co/docs/transformers/main_classes/trainer#transformers.Seq2SeqTrainer>`<br>`{=html}
 
-training 1400 sample
+### choosing the encoder and decoder for the Task
 
-evaluaꢀon 600 sample
+``` shell
+# choosing feature extractor and tokenizer
+feature_extractor = AutoFeatureExtractor.from_pretrained("google/vit-base-patch16-384")
+decoder_tokenizer = AutoTokenizer.from_pretrained('xlm-roberta-base')
+processor =TrOCRProcessor(feature_extractor=feature_extractor, tokenizer=decoder_tokenizer)
+```
 
+### Train parameters
 
+`<b>`{=html} Note :`</b>`{=html} some of these values were chosen to
+reduce Memory and computational power due to hardware limitation
 
-<a name="br3"></a> 
+-   `maxlength for seq = 20`
+-   `batch size =3`
+-   `epoch =3`
+:::
 
-Training
+::: {#606e5425 .cell .markdown}
+# Evaluation
 
-The training used HuggingFace's Seq2SeqTrainer :
+`<b>`{=html} Character Error Rate (CER) metric for evaluating the
+performance of a sequence-to-sequence model`<br>`{=html}
+<https://huggingface.co/spaces/evaluate-metric/cer>
+:::
 
-[hꢁps://huggingface.co/docs/transformers/main_classes/trainer#transformers.Seq2SeqTrainer](https://huggingface.co/docs/transformers/main_classes/trainer#transformers.Seq2SeqTrainer)
-
-choosing the encoder and decoder for the Task
-
-\# choosing feature extractor and tokenizer
-
-feature\_extractor =
-
-AutoFeatureExtractor.from\_pretrained("google/vitbase-patch16-384")
-
-decoder\_tokenizer = AutoTokenizer.from\_pretrained('xlm-roberta-base')
-
-processor =TrOCRProcessor(feature\_extractor=feature\_extractor,
-
-tokenizer=decoder\_tokenizer)
-
-Train parameters
-
-Note : some of these values were chosen to reduce Memory and computaꢀonal power due to hardware
-
-limitaꢀon
-
-• maxlength for seq = 20
-
-• batch size =3
-
-• epoch =3
-
-Evaluaꢀon
-
-Character Error Rate (CER) metric for evaluaꢀng the performance of a sequence-to-sequence model
-
-[hꢁps://huggingface.co/spaces/evaluate-metric/cer](https://huggingface.co/spaces/evaluate-metric/cer)
-
+::: {#f2efcc15 .cell .code}
+``` python
+```
+:::
