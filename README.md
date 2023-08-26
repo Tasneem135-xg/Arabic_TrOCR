@@ -13,7 +13,7 @@ This file is organized as following:
     4.  `Training Dataset`
     5.  Training
     6.  Evaluation
-:::
+
 
 # The Model Architecture
 
@@ -25,9 +25,7 @@ This file is organized as following:
     <https://huggingface.co/transformers/master/model_doc/trocr.html>
 -   TrOCR Tutorial :
     <https://github.com/NielsRogge/Transformers-Tutorials/tree/master/TrOCR>
-:::
 
-::: {#125b900a .cell .markdown}
 # Pipeline
 
 ### Initial Dataset
@@ -50,9 +48,7 @@ data this was done using
 `<b>`{=html} example:
 
 ![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
-:::
 
-::: {#4aedefd1 .cell .markdown}
 ### Data Preprocessing
 
 Removing Background and enhance the characters
@@ -63,9 +59,7 @@ Removing Background and enhance the characters
 `<b>`{=html} Output:
 
 ![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
-:::
 
-::: {#8d4cf9c0 .cell .markdown}
 ### Training Dataset
 
 Due to Limited Time and Computational Power espicially RAM A random
@@ -73,9 +67,7 @@ Sample was taken from the initial data with :
 
 -   training 1400 sample
 -   evaluation 600 sample
-:::
 
-::: {#e3d14ce8 .cell .markdown}
 # Training
 
 The training used HuggingFace\'s Seq2SeqTrainer :
@@ -98,17 +90,10 @@ reduce Memory and computational power due to hardware limitation
 -   `maxlength for seq = 20`
 -   `batch size =3`
 -   `epoch =3`
-:::
 
-::: {#606e5425 .cell .markdown}
 # Evaluation
 
 `<b>`{=html} Character Error Rate (CER) metric for evaluating the
 performance of a sequence-to-sequence model`<br>`{=html}
 <https://huggingface.co/spaces/evaluate-metric/cer>
-:::
 
-::: {#f2efcc15 .cell .code}
-``` python
-```
-:::
