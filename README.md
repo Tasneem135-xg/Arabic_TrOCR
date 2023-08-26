@@ -93,7 +93,6 @@ reduce Memory and computational power due to hardware limitation
 
 # Evaluation
 
-`<b>`{=html} Character Error Rate (CER) metric for evaluating the
-performance of a sequence-to-sequence model`<br>`{=html}
+<b> Character Error Rate (CER) metric for evaluating the performance of a sequence-to-sequence model<br>
 <https://huggingface.co/spaces/evaluate-metric/cer>
 
