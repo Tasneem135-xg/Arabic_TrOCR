@@ -17,9 +17,6 @@ This file is organized as following:
 
 # The Model Architecture
 
-![Schermafbeelding 2021-10-26 om
-16.09.25.png](vertopal_4a03238dee3f41dd855981586886f7e0/84fdb236e81339883abd76b5857ced0e5b47abc1.png)
-
 ![GitHub Logo](https://github.com/Tasneem135-xg/Arabic_TrOCR/blob/master/png_docx/arch.png)
 
 
@@ -49,9 +46,10 @@ data this was done using
 2.  Compare Maximum character Height to choose `threshold = 17`
 3.  Remove the Faulty Images `8%` leaving `92%` for training
 
-`<b>`{=html} example:
+<b> example:
 
-![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
+![GitHub Logo](https://github.com/Tasneem135-xg/Arabic_TrOCR/blob/master/png_docx/defect.png)
+
 
 ### Data Preprocessing
 
@@ -60,9 +58,9 @@ Removing Background and enhance the characters
 1.  convert image to greyscale
 2.  Binarize image `threshold = 110`
 
-`<b>`{=html} Output:
+<b> Output:
 
-![image.png](vertopal_4a03238dee3f41dd855981586886f7e0/image.png)
+![GitHub Logo](https://github.com/Tasneem135-xg/Arabic_TrOCR/blob/master/png_docx/image.png)
 
 ### Training Dataset
 
@@ -75,7 +73,7 @@ Sample was taken from the initial data with :
 # Training
 
 The training used HuggingFace\'s Seq2SeqTrainer :
-<https://huggingface.co/docs/transformers/main_classes/trainer#transformers.Seq2SeqTrainer>`<br>`{=html}
+<https://huggingface.co/docs/transformers/main_classes/trainer#transformers.Seq2SeqTrainer> <br>
 
 ### choosing the encoder and decoder for the Task
 
