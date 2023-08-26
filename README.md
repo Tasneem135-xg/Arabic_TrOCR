@@ -1,6 +1,4 @@
-
-
-::: {#fbb97754 .cell .markdown}
+:::
 # Optical character recognition For Arabic Text
 
 This is a fine tuning repo for TrOCR on Images that contains arabic text
