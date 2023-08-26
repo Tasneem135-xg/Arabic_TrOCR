@@ -18,9 +18,6 @@ This file is organized as following:
 # The Model Architecture
 
 ![GitHub Logo](https://github.com/Tasneem135-xg/Arabic_TrOCR/blob/master/png_docx/arch.png)
-
-
-
 -   TrOCR paper: <https://arxiv.org/abs/2109.10282>
 -   TrOCR documentation:
     <https://huggingface.co/transformers/master/model_doc/trocr.html>
